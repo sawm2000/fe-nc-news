@@ -1,14 +1,19 @@
-function ArticleCard ({article, key}){
-return (
-    <li className="article-item" key={key}>
-              <p>Title: {article.title}</p>
+import { useState } from "react";
+import SingleArticle from "./SingleArticle"
+import { Link } from "react-router-dom";
+
+function ArticleCard ({article, articles}){
+
+
+return(
+<li className="article-item" >
+              <Link to={`/articles/${article.article_id}`} state={articles} >{article.title}</Link>
               <p>Topic: {article.topic}</p>
               <img id="article-img" src={article.article_img_url} alt="article image"></img>
               <p>Written by: {article.author}</p>
-              <p>Votes: {article.votes}</p>
              <br></br> 
             </li>
-)
-}
+    )}
+
 
 export default ArticleCard

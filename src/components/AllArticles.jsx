@@ -5,6 +5,7 @@ import ArticleCard from "./ArticleCard";
 function AllArticles() {
   const [articles, setArticles] = useState([]);
 
+
   useEffect(() => {
     getArticles().then((response) => {
       setArticles(response.articles);
@@ -13,10 +14,10 @@ function AllArticles() {
   },[]);
   return (
     <>
-      <ul className="article-list">
+      <ul key="articleList" className="article-list">
         {articles.map((article) => {
           return (
-            <ArticleCard key={articles.title} article={article}/>
+            <ArticleCard key={article.title} article={article} articles={articles}/>
           );
         })}
       </ul>
