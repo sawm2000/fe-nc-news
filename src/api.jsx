@@ -37,3 +37,9 @@ export const deleteComment = (comment_id) => {
     
     })
 }
+
+export const getTopics = () => {
+    return baseApi.get(`/api/topics`).then((response) => {
+      return response.data;
+    });
+  };
