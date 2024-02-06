@@ -26,7 +26,7 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: auto;
 
 }
 .article-list{
@@ -34,4 +34,15 @@
 }
 .article-item{
     background-color: #f0d5ee;
+    list-style-type: none; 
 }
+
+.comment-list{
+    list-style-type: none; 
+}
+#carousel {
+    padding-bottom: 100px;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+

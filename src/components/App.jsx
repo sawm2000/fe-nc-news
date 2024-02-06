@@ -3,7 +3,7 @@ import Header from "./Header";
 import Navigation from "./Navigation";
 import { Routes, Route } from "react-router-dom";
 import SingleArticle from "./SingleArticle";
-import ArticleCard from "./ArticleCard";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (

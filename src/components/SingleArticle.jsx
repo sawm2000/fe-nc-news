@@ -1,12 +1,12 @@
 import { useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import CommentCard from "./CommentCard";
 
 function SingleArticle() {
   const { article_id } = useParams();
   const location = useLocation();
   const articles = location.state;
 
- console.log(article_id)
 
   for (let i = 0; i < articles.length; i++) {
     if (article_id == articles[i].article_id) {
@@ -24,6 +24,7 @@ function SingleArticle() {
           <p>Written by: {article.author}</p>
           <p>Votes: {article.votes}</p>
           <br />
+          <CommentCard article_id={article_id} commentCount={article.comment_count}/>
         </li>
       );
     }
