@@ -77,3 +77,25 @@ body{
 #submit-comment:hover{
     background-color: #f0afec;
 }
+#topic-title{
+    text-align: center;
+    color: #bd1eb5;
+}
+.topic-list{
+    list-style-type: none; 
+}
+#topic-item{
+    border:solid;
+    border-color: #bd1eb5;
+    padding: 20px;
+    text-align: center;
+    margin: 20px;
+    background-color: #ffd5fc;
+    font-size: x-large;
+    color: rgb(63, 59, 63);
+    text-decoration: none;
+    
+}
+.topic-item:hover{
+    background-color: #ec49e4;
+}
