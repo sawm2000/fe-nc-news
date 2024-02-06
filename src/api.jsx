@@ -31,3 +31,9 @@ let endPointString = "api/articles"
       return response.data;
     })
 }
+
+export const deleteComment = (comment_id) => {
+    return baseApi.delete(`/api/comments/${comment_id}`).then(() => {
+    
+    })
+}

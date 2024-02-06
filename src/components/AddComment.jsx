@@ -33,7 +33,7 @@ function AddComment({article_id}) {
         setError("Couldn't add comment")
         
     });
-    setIsSubmitting(false);
+    
   }
   if (error) {
     return <p>{error}</p>;

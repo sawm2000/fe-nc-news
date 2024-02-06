@@ -1,21 +1,37 @@
 import { useEffect, useState } from "react";
-import { getComments } from "../api";
+import { getComments, deleteComment } from "../api";
 import Carousel from "react-bootstrap/Carousel";
 import AddComment from "./AddComment";
 
 function CommentCard({ article_id , commentCount}) {
   const [comments, setComments] = useState([]);
   const [index, setIndex] = useState(1);
+  const [error, setError] = useState();
+  const [isDeleted, setIsDeleted] = useState(false)
 
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex);
   };
+
+ function handleDelete(comment_id){
+      deleteComment(comment_id).then(()=>{
+          setIsDeleted(true)
+      })
+      .catch(()=>{
+        setError("Couldn't delete comment")
+      })
+ }
 
   useEffect(() => {
     getComments(article_id).then((response) => {
       setComments(response.comments);
     });
   }, []);
+
+  if (error) {
+    return <p>{error}</p>;
+  }
+
   return (
     <>
     <h3>Comments {commentCount}</h3>
@@ -32,6 +48,8 @@ function CommentCard({ article_id , commentCount}) {
               <p>{comment.body}</p>
               <p>By: {comment.author}</p>
               <p>Votes: {comment.votes}</p>
+              <button disabled={isDeleted} onClick={() => handleDelete(comment.comment_id)}>Delete</button>
+              <p>{isDeleted ? "Comment has been deleted" : null}</p>
             </Carousel.Item>
           );
         })}
