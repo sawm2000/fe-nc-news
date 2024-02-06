@@ -2,6 +2,11 @@
     text-align: center;
     color: rgb(255, 0, 221);
 }
+body{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
 .navigation{
     width: 60%;
     margin: 10px;
@@ -39,6 +44,9 @@
 
 .comment-list{
     list-style-type: none; 
+    padding-left: 30px;
+    padding-right: 30px;
+    text-align: center;
 }
 #carousel {
     padding-bottom: 100px;
@@ -46,3 +54,26 @@
     padding-right: 50px;
   }
 
+#comment{
+    padding: 30px;
+    margin-top: 20px;
+    margin-left: 15px;
+    border-color: #ff49f6;
+}
+
+#username{
+    padding: 5px;
+    margin-left: 15px;
+    margin-top: 15px;
+    border-color: #ff49f6;
+}
+
+#submit-comment{
+    margin-left: 200px;
+    margin-top: 15px;
+    background-color: #ff68f5;
+    border-color: #ff49f6;
+}
+#submit-comment:hover{
+    background-color: #f0afec;
+}

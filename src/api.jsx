@@ -25,3 +25,9 @@ let endPointString = "api/articles"
       return response.data;
     });
   };
+
+  export const postComment = (article_id, comment) => {
+    return baseApi.post(`/api/articles/${article_id}/comments`, comment).then((response) => {
+      return response.data;
+    })
+}
