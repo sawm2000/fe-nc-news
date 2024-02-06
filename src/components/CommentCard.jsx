@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getComments } from "../api";
 import Carousel from "react-bootstrap/Carousel";
+import AddComment from "./AddComment";
 
 function CommentCard({ article_id , commentCount}) {
   const [comments, setComments] = useState([]);
@@ -18,6 +19,7 @@ function CommentCard({ article_id , commentCount}) {
   return (
     <>
     <h3>Comments {commentCount}</h3>
+    <AddComment article_id={article_id}/>
       <Carousel
         id="carousel"
         activeIndex={index}
