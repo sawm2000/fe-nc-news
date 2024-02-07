@@ -8,12 +8,6 @@ const baseApi = axios.create({
 let endPointString = "api/articles"
 const queries = [];
 
-console.log(order, "order")
-console.log(page, "page")
-console.log(sortBy, "sortby")
-console.log(limit, "limit")
-console.log(topic, "topic")
-
     if (sortBy) {
         queries.push(`sort_by=${sortBy}`);
       }
@@ -38,8 +32,6 @@ console.log(topic, "topic")
         endPointString += `?${queries.join('&')}`;
       }
      
-console.log(endPointString)
-
     return baseApi.get(endPointString).then((response) => {
       return response.data;
     });
@@ -78,6 +70,12 @@ export const deleteComment = (comment_id) => {
 
 export const getTopics = () => {
     return baseApi.get(`/api/topics`).then((response) => {
+      return response.data;
+    });
+  };
+
+  export const getUsers = () => {
+    return baseApi.get(`/api/users`).then((response) => {
       return response.data;
     });
   };
