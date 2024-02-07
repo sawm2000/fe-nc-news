@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import CommentCard from "./CommentCard";
-import { patchArticles, getArticles } from "../api";
+import { patchArticles, getSingleArticle } from "../api";
 
 function SingleArticle() {
   const { article_id } = useParams();
@@ -13,7 +13,7 @@ function SingleArticle() {
 
 
 useEffect(()=>{
-  getArticles(article_id).then((response)=>{
+  getSingleArticle(article_id).then((response)=>{
     setArticle(response.article)
     setLoading(false);
   })

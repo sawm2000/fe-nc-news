@@ -4,15 +4,53 @@ const baseApi = axios.create({
     baseURL: "https://nc-news-c0co.onrender.com",
   });
 
-  export const getArticles = (article_id) => {
+  export const getArticles = (sortBy, order, page, limit, topic) => {
 let endPointString = "api/articles"
-    if(article_id !== undefined){
-            endPointString += `/${article_id}`
-    }
+const queries = [];
+
+console.log(order, "order")
+console.log(page, "page")
+console.log(sortBy, "sortby")
+console.log(limit, "limit")
+console.log(topic, "topic")
+
+    if (sortBy) {
+        queries.push(`sort_by=${sortBy}`);
+      }
+
+      if (limit) {
+        queries.push(`limit=${limit}`);
+      }
+
+      if (order) {
+        queries.push(`order=${order}`);
+      }
+
+      if (page) {
+        queries.push(`page=${page}`);
+      }
+
+      if (topic) {
+        queries.push(`topic=${topic}`);
+      }
+
+      if (queries.length > 0) {
+        endPointString += `?${queries.join('&')}`;
+      }
+     
+console.log(endPointString)
+
     return baseApi.get(endPointString).then((response) => {
       return response.data;
     });
   };
+
+
+  export const getSingleArticle = (article_id) =>{
+    return baseApi.get(`api/articles/${article_id}`).then((response) => {
+        return response.data;
+      });
+  }
 
   export const getComments = (article_id) => {
     return baseApi.get(`/api/articles/${article_id}/comments`).then((response) => {
