@@ -156,3 +156,25 @@ body{
     text-align: center;
     color: #72176d;
 }
+#current-username{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+#current-img{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    height: 80px;
+    margin-top: 30px;
+}
+#user-img{
+    height: 80px;
+}
+
+#user-list{
+    text-decoration: none;
+}
