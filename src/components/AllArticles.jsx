@@ -6,8 +6,8 @@ import { useSearchParams } from "react-router-dom";
 function AllArticles() {
   const [articles, setArticles] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [pageNum, setPageNum] = useState(0);
   const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState("");
 
   const topic = searchParams.get("topic");
   const sortBy = searchParams.get("sort_by") || "created_at";
@@ -20,7 +20,9 @@ function AllArticles() {
     getArticles(sortBy, order, page, limit, topic).then((response) => {
       setArticles(response.articles);
       setIsLoading(false)
-    });
+    }).catch((error)=>{
+        setError(error.response.data.message)
+    })
   }, [sortBy, order, page, topic, limit]);
 
   function handleSort(event) {
@@ -61,6 +63,11 @@ function AllArticles() {
     setSearchParams(newParams);
   }
 
+if(error){
+  return(
+    <p>{error}</p>
+  )
+}
 
   return (
     <>

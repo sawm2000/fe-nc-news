@@ -46,8 +46,8 @@ function AddComment({article_id, setComments, setArticle}) {
       })
 
     })
-    .catch(() => {
-        setError("Couldn't add comment")
+    .catch((error) => {
+        setError(error.response.data.message)
         
     });
     
