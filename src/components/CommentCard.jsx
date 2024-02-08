@@ -44,8 +44,8 @@ function CommentCard({ article_id, article, setArticle }) {
         setComments(response.comments);
         setIsLoading(false);
       })
-      .catch(() => {
-        setError("Couldn't load comments");
+      .catch((error) => {
+        setError(error.response.data.message);
       });
   }, []);
 

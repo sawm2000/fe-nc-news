@@ -19,7 +19,7 @@ useEffect(()=>{
     setLoading(false);
   })
   .catch((error)=>{
-    setError("Error when getting articles");
+    setError(error.response.data.message);
         setLoading(false);
   })
 

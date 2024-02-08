@@ -10,7 +10,7 @@ const {loggedInUser} = useContext(UserContext)
         <>
    <nav >
     <ul className="navigation">
-        <li className="nav-item">Home</li>
+        <Link to="/" className="nav-item">Home</Link>
         <Link to="/topics" className="nav-item"> Topics</Link>
         <Link to="/articles" className="nav-item">Articles</Link>
         <Link to="/users" className="nav-item">Users</Link>

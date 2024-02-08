@@ -8,6 +8,8 @@ import TopicList from "./TopicList";
 import Users from "./Users";
 import { useState } from "react";
 import UserContext from "../contexts/UserContext"
+import Home from "./Home";
+import ErrorPage from "./ErrorPage";
 
 function App() {
 
@@ -23,10 +25,12 @@ function App() {
   <UserContext.Provider value={{loggedInUser, setLoggedInUser}}>
    <Navigation />
    <Routes>
+    <Route path="/" element={<Home/>}/>
     <Route path="/articles" element={<AllArticles/>}/>
     <Route path="/topics" element={<TopicList />}/>
     <Route path="/articles/:article_id" element={<SingleArticle/>}/>
     <Route path="/users" element={<Users />}/>
+    <Route path="*" element={<ErrorPage/>} />
    </Routes>
    </UserContext.Provider>
    </>

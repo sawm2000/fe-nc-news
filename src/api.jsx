@@ -19,7 +19,7 @@ export const getArticles = (sortBy, order, page, limit, topic) => {
 
   return baseApi.get(endPointString, {params: queries}).then((response) => {
     return response.data;
-  });
+  })
 };
 
 export const getSingleArticle = (article_id) => {
