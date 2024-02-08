@@ -1,12 +1,19 @@
-import { useState } from "react";
-import { postComment } from "../api";
+import { useEffect, useState } from "react";
+import { postComment, getComments, getSingleArticle } from "../api";
 import Expand from "./Expand";
+import { useContext } from "react"
+import UserContext from "../contexts/UserContext"
 
-function AddComment({article_id}) {
+function AddComment({article_id, setComments, setArticle}) {
   const [username, setUsername] = useState("");
   const [comment, setComment] = useState("");
   const [error, setError] = useState();
   const [isPosted, setIsPosted] = useState(false);
+  const {loggedInUser, setLoggedInUser} = useContext(UserContext)
+
+ useEffect(()=>{
+  setUsername(loggedInUser.username)
+ }, [])
 
   function handleUsername(event) {
     setUsername(event.target.value);
@@ -24,10 +31,20 @@ function AddComment({article_id}) {
         body: comment,
     }
     postComment(article_id, itemToPost)
-    .then((response) => {
+    .then(() => {
       setComment("");
       setUsername("");
-      setIsPosted(true)    
+      setIsPosted(true) 
+      
+      getComments(article_id).then((response) => {
+        setComments(response.comments);
+        setIsPosted(false)
+      });
+
+      getSingleArticle(article_id).then((response)=>{
+        setArticle(response.article)
+      })
+
     })
     .catch(() => {
         setError("Couldn't add comment")
@@ -48,7 +65,7 @@ function AddComment({article_id}) {
       <input
         id="username"
         type="text"
-        value={username}
+        value={loggedInUser.username}
         onChange={handleUsername}
         required
         disabled={isPosted}
@@ -64,7 +81,7 @@ function AddComment({article_id}) {
         disabled={isPosted}
       />
       <br></br>
-      <button id="submit-comment">Submit</button>
+      <button id="submit-comment" disabled={isPosted} >Submit</button>
       </Expand>
     </form> 
      <p>{isPosted ? "Comment has been posted" : null}</p>

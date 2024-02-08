@@ -10,6 +10,7 @@ function SingleArticle() {
   const [articleVote, setArticleVote] = useState(0)
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
+  const [voted, setVoted] = useState(false)
 
 
 useEffect(()=>{
@@ -25,7 +26,7 @@ useEffect(()=>{
 },[article_id])
 
 useEffect(()=>{
-    if (articleVote !== 0) {
+    if (articleVote && !voted) {
       const patchObject = {
         inc_votes: articleVote
       };
@@ -36,6 +37,7 @@ useEffect(()=>{
             votes: response.article.votes
           }));
            setArticleVote(0);
+           setVoted(true)
         })
       .catch((error)=>{
         setError("Couldn't update votes")
@@ -50,12 +52,13 @@ useEffect(()=>{
   },[articleVote, article_id, article])
 
   function handleVote(vote){
+    if(!voted){
     setArticle((currentArticle) => ({
       ...currentArticle,
       votes: currentArticle.votes + articleVote
     }));
     setArticleVote(vote)
-  }
+  }}
 
   if (loading) {
     return <p>Loading...</p>;
@@ -74,12 +77,12 @@ useEffect(()=>{
             alt="article image"
           />
           <p>Written by: {article.author}</p>
-          <button id="up-button" onClick={() => handleVote(1)}><img height="50px" width="auto" src="https://cdn3.emoji.gg/emojis/7207-thumbs-up.png" alt="Up vote" /></button>
+          <button disabled={voted} id="up-button" onClick={() => handleVote(1)}><img height="50px" width="auto" src="https://cdn3.emoji.gg/emojis/7207-thumbs-up.png" alt="Up vote" /></button>
           <p>Votes: {article.votes}</p>
-          <button onClick={() => handleVote(-1)}><img height="50px" width="auto"   style={{ transform: 'rotate(180deg) scaleX(-1)' }}     src="https://cdn3.emoji.gg/emojis/7207-thumbs-up.png" alt="Down vote" /></button>
+          <button disabled={voted} onClick={() => handleVote(-1)}><img height="50px" width="auto"   style={{ transform: 'rotate(180deg) scaleX(-1)' }}     src="https://cdn3.emoji.gg/emojis/7207-thumbs-up.png" alt="Down vote" /></button>
           <br/>
           <br/>
-          <CommentCard article_id={article_id} commentCount={article.comment_count}/>
+          <CommentCard article_id={article_id} article={article} setArticle={setArticle}/>
         </li>
       );
     }

@@ -139,6 +139,9 @@ body{
     border-color: #bd1eb5;
     margin-left: 30px;
     padding: 5px 25px;
+    right: 0;
+    position: absolute;
+    margin-right: 20px;
 }
 #next-button:hover{
     background-color: #f18aec;
@@ -148,7 +151,9 @@ body{
     background-color: #f0d5ee;
     color: #353535;
     border-color: #bd1eb5;
-    margin-left: 555px;
+    left:0;
+    position: absolute;
+    margin-left: 50px;
     padding: 5px 25px;
 }
 #page-num{

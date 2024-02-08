@@ -7,6 +7,7 @@ function AllArticles() {
   const [articles, setArticles] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const [pageNum, setPageNum] = useState(0);
+  const [isLoading, setIsLoading] = useState(true)
 
   const topic = searchParams.get("topic");
   const sortBy = searchParams.get("sort_by") || "created_at";
@@ -18,6 +19,7 @@ function AllArticles() {
   useEffect(() => {
     getArticles(sortBy, order, page, limit, topic).then((response) => {
       setArticles(response.articles);
+      setIsLoading(false)
     });
   }, [sortBy, order, page, topic, limit]);
 
@@ -34,16 +36,16 @@ function AllArticles() {
   }
 
   function handleNext() {
-    setPageNum(pageNum + 1);
+   
     const newParams = new URLSearchParams(searchParams);
-    newParams.set("page", pageNum);
+    newParams.set("page", Number(page) + 1);
     setSearchParams(newParams);
   }
 
   function handlePrev() {
-    setPageNum(pageNum - 1);
+   
     const newParams = new URLSearchParams(searchParams);
-    newParams.set("page", pageNum);
+    newParams.set("page", Number(page) - 1);
     setSearchParams(newParams);
   }
 
@@ -76,24 +78,24 @@ function AllArticles() {
       <button id="order-button" onClick={handleOrder}>
         {order === "asc" ? "Asc" : "Desc"}
       </button>
+
+      {isLoading ? (<p>loading...</p> ) : (
+          <>
       <ul key="articleList" className="article-list">
         <h3 id="topic-title">{topic ? topic : null}</h3>
         {articles.map((article) => {
-return (
-      <>
+        return(
         <ArticleCard
           key={article.title}
           article={article}
           articles={articles}
-        />
-      </>
-    );
-        })}
+    />
+    )})}
       </ul>
-      <button id="next-button" onClick={handleNext}>next</button>
-      <button id="prev-button"disabled={page === 1} onClick={handlePrev}>
+      <button id="prev-button"disabled={page == 1} onClick={handlePrev}>
         previous
       </button>
+      <button id="next-button" onClick={handleNext}>next</button>
       <p id="page-num">{page}</p>
       <label id="limit-label" htmlFor="limit">Page limit: </label>
       <select id="limit" value={limit} onChange={handleLimit}>
@@ -101,8 +103,10 @@ return (
         <option value={10}>10</option>
         <option value={15}>15</option>
       </select>
-    </>
-  );
-}
-
+      </>
+      )}
+      </>
+      )
+      }
+    
 export default AllArticles;
