@@ -1,7 +1,12 @@
+import { Link } from "react-router-dom";
+
 function Header (){
 
     return( 
-    <h1 id="nc-news"> NC News</h1>
+      <Link to="/" id="header-link">
+      <h1 id="nc-news"> NC News</h1>
+      </Link>
+   
     )
 
   };

@@ -2,17 +2,25 @@
     text-align: center;
     color: rgb(255, 0, 221);
 }
+#nc-news:hover{
+    transform: scale(1.1);
+}
+#header-link{
+    text-decoration: none;
+}
 body{
     margin-left: 20px;
     margin-right: 20px;
     margin-bottom: 20px;
+    background-color: #f0d5ee;
 }
 .navigation{
-    width: 400px;
+    width: 450px;
     margin: 10px;
     list-style-type: none;
     background-color: #ff49f6;
     display: flex; 
+    justify-content: center;
 }
 .nav-item{
     text-align: center;
@@ -38,8 +46,9 @@ body{
     list-style-type: none; 
 }
 .article-item{
-    background-color: #f0d5ee;
+    background-color: #ffbcfb;
     list-style-type: none; 
+    padding-left: 20px;
 }
 
 .comment-list{
@@ -91,13 +100,14 @@ body{
     text-align: center;
     margin: 20px;
     background-color: #ffd5fc;
-    font-size: x-large;
-    color: rgb(63, 59, 63);
-    text-decoration: none;
-    
+    font-size: x-large;   
 }
-.topic-item:hover{
-    background-color: #ec49e4;
+#topic-name{
+    text-decoration: none;
+    color: rgb(63, 59, 63);
+}
+#topic-item:hover{
+    background-color: #f18aec;
 }
 #sort_by{
     border-color: #bd1eb5;
@@ -156,32 +166,42 @@ body{
     margin-left: 50px;
     padding: 5px 25px;
 }
+#prev-button:hover{
+    background-color: #f18aec;
+}
 #page-num{
     font-size: 35px;
     text-align: center;
     color: #72176d;
 }
 #current-username{
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 10px;
-    margin-bottom: 20px;
+    text-decoration: none;
+    color: #353535;
+    margin-bottom: 5px;
+    font-size: 15px;
+    text-align: center;
+}
+#current-username:hover{
+    transform: scale(1.1);
 }
 #current-img{
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 10px;
-    height: 80px;
-    margin-top: 30px;
+    padding: 5px;
+    height: 50px;
+}
+#current-img:hover{
+    transform: scale(1.1);
 }
 #user-img{
     height: 80px;
 }
 
-#user-list{
-    text-decoration: none;
+#user-item{
+    list-style-type: none;
+    text-align: center;
+}
+#user-username{
+    margin-top: 15px;
+    color: #72176d;
 }
 
 #error{
@@ -189,4 +209,38 @@ body{
     font-size: 24px;
     color: red;
     background-color: #f0d5ee;
+}
+#welcome{
+    text-align: center;
+    color: #bd1bbd;
+    margin-top: 30px;
+}
+
+#home-main{
+    background-color: #ffbcfb;
+    text-align: center;
+    padding: 20px 20px;
+}
+.home-button{
+    background-color: #ffd5fc;
+    font-size: x-large;   
+    color: #353535;
+    border: solid;
+     border-color: #bd1eb5;
+     padding: 5px 25px;
+     text-decoration: none;
+}
+.home-button:hover{
+    background-color: #f18aec;
+}
+
+#login-button{
+    margin-top: 15px;
+    background-color: #ffd5fc;
+    color: #353535;
+    border-color: #bd1eb5;
+    padding: 3px 15px;
+}
+#login-button:hover{
+    background-color: #f18aec;
 }

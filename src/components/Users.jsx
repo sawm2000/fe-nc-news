@@ -17,7 +17,7 @@ return(
     <ul id="user-list">
         {users.map((user)=>{
             return(
-                <li key={user.username}>
+                <li id="user-item" key={user.username}>
                     <UserCard user={user}/>
                 </li>
             )

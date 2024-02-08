@@ -4,7 +4,7 @@ function TopicPage ({topic}){
 
 return(
     <>
-    <Link to={`/articles?topic=${topic.slug}`}>{topic.slug}</Link>
+    <Link id="topic-name"to={`/articles?topic=${topic.slug}`}>{topic.slug}</Link>
     <br></br>
     </>
 )

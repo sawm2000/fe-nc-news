@@ -14,16 +14,18 @@ const {loggedInUser} = useContext(UserContext)
         <Link to="/topics" className="nav-item"> Topics</Link>
         <Link to="/articles" className="nav-item">Articles</Link>
         <Link to="/users" className="nav-item">Users</Link>
-    </ul>
-    </nav>
-   <div>
-    <p id="current-username">{loggedInUser.username}</p>
+  
+    <Link to="/users"> 
+    
     <img
     id="current-img"
     src={loggedInUser.avatar_url}
     alt={`avatar for user ${loggedInUser.username}`}
     />
-   </div>
+    {/* <p id="current-username">{loggedInUser.username}</p> */}
+   </Link> 
+    </ul>
+   </nav>
    </>
     )
 
