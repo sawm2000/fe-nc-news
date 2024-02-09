@@ -9,13 +9,14 @@ function UserCard ({user}){
 
 return (
     <>
-        <h3 id="user-username">{user.username}</h3> 
+       
         <img
         id="user-img"
         src={user.avatar_url}
         alt={`avatar for user ${user.username}`}
         />
-        <br></br>
+         <h3 id="user-username">{user.username}</h3> 
+
         {user.username !== loggedInUser.username ? (
             <button id="login-button"
             onClick={()=>{

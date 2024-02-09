@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getArticles } from "../api";
 import ArticleCard from "./ArticleCard";
 import { useSearchParams } from "react-router-dom";
+import Loading from "./Loading";
 
 function AllArticles() {
   const [articles, setArticles] = useState([]);
@@ -20,6 +21,7 @@ function AllArticles() {
     getArticles(sortBy, order, page, limit, topic).then((response) => {
       setArticles(response.articles);
       setIsLoading(false)
+      setError("")
     }).catch((error)=>{
         setError(error.response.data.message)
     })
@@ -86,7 +88,7 @@ if(error){
         {order === "asc" ? "Asc" : "Desc"}
       </button>
 
-      {isLoading ? (<p>loading...</p> ) : (
+      {isLoading ? (<Loading loading={"articles"}/> ) : (
           <>
       <ul key="articleList" className="article-list">
         <h3 id="topic-title">{topic ? topic : null}</h3>

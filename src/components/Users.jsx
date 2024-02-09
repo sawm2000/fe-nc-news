@@ -1,32 +1,35 @@
-import { useEffect, useState } from "react"
-import { getUsers } from "../api"
-import UserCard from "./UserCard"
+import { useEffect, useState } from "react";
+import { getUsers } from "../api";
+import UserCard from "./UserCard";
+import Loading from "./Loading";
 
+function Users() {
+  const [users, setUsers] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-function Users (){
-
-    const [users, setUsers] = useState([])
-
-    useEffect(()=>{
-        getUsers().then((response)=>{
-            setUsers(response.users)
-        })
-    }, [])
-return(
+  useEffect(() => {
+    getUsers().then((response) => {
+      setUsers(response.users);
+      setIsLoading(false);
+    });
+  }, []);
+  return (
     <>
-    <ul id="user-list">
-        {users.map((user)=>{
-            return(
-                <li id="user-item" key={user.username}>
-                    <UserCard user={user}/>
-                </li>
-            )
-        })}
-    </ul>
-    
-    
+      {isLoading ? (
+        <Loading loading={"users"} />
+      ) : (
+        <ul id="user-list">
+          {users.map((user) => {
+            return (
+              <li id="user-item" key={user.username}>
+                <UserCard user={user} />
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </>
-)
+  );
 }
 
-export default Users
+export default Users;

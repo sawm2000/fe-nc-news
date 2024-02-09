@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import CommentCard from "./CommentCard";
 import { patchArticles, getSingleArticle } from "../api";
+import Loading from "./Loading";
 
 function SingleArticle() {
   const { article_id } = useParams();
@@ -61,27 +62,32 @@ useEffect(()=>{
   }}
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <Loading loading={"article"}/>;
   }
 
-  if (error) {
+  if (error && error !== "Couldn't update votes") {
     return <p>{error}</p>;
   }
+
       return (
         <li className="article-item">
-          <p>{article.title}</p>
-          <p>Topic: {article.topic}</p>
+          <p id="article-title">{article.title}</p>
+          <p className="article-author">Written by: {article.author}</p>
+          <p className="topic">{article.topic}</p>
           <img
             id="article-img"
             src={article.article_img_url}
             alt="article image"
           />
-          <p>Written by: {article.author}</p>
-          <button disabled={voted} id="up-button" onClick={() => handleVote(1)}><img height="50px" width="auto" src="https://cdn3.emoji.gg/emojis/7207-thumbs-up.png" alt="Up vote" /></button>
-          <p>Votes: {article.votes}</p>
-          <button disabled={voted} onClick={() => handleVote(-1)}><img height="50px" width="auto"   style={{ transform: 'rotate(180deg) scaleX(-1)' }}     src="https://cdn3.emoji.gg/emojis/7207-thumbs-up.png" alt="Down vote" /></button>
+      
+          <section id="votes">
+          <button disabled={voted} id="up-button" onClick={() => handleVote(1)}><img height="35px" width="auto" src="https://cdn3.emoji.gg/emojis/7207-thumbs-up.png" alt="Up vote" /></button>
+          <p id="vote-num">{article.votes}</p>
+          <button id="down-button" disabled={voted} onClick={() => handleVote(-1)}><img height="35px" width="auto"   style={{ transform: 'rotate(180deg) scaleX(-1)' }}     src="https://cdn3.emoji.gg/emojis/7207-thumbs-up.png" alt="Down vote" /></button>
           <br/>
           <br/>
+          {error === "Couldn't update votes" ? <p>{error}</p> : null}
+          </section>
           <CommentCard article_id={article_id} article={article} setArticle={setArticle}/>
         </li>
       );

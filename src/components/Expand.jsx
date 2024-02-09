@@ -9,7 +9,7 @@ function Expand ({children}){
 
     return(
         <>
-        <button onClick={handleOpen}>
+        <button id="add-comment" onClick={handleOpen}>
         {isOpen ? "Hide" : "Add comment"}
         </button>
         <p>{isOpen ? <div>{children}</div> : null}</p>

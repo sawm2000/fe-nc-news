@@ -4,6 +4,7 @@ import Carousel from "react-bootstrap/Carousel";
 import AddComment from "./AddComment";
 import { useContext } from "react";
 import UserContext from "../contexts/UserContext";
+import Loading from "./Loading";
 
 function CommentCard({ article_id, article, setArticle }) {
   const [comments, setComments] = useState([]);
@@ -55,7 +56,7 @@ function CommentCard({ article_id, article, setArticle }) {
 
   return (
     <>
-      <h3>Comments {article.comment_count}</h3>
+      <h3 id="comments-label">Comments {article.comment_count}</h3>
       <AddComment
         article_id={article_id}
         setComments={setComments}
@@ -68,7 +69,7 @@ function CommentCard({ article_id, article, setArticle }) {
         variant="dark"
       >
         {isLoading ? (
-          <p>Loading comments ...</p>
+          <Loading loading={"comments"}/>
         ) : (
           comments.map((comment) => {
             return (
@@ -82,6 +83,7 @@ function CommentCard({ article_id, article, setArticle }) {
                 <p>Votes: {comment.votes}</p>
                 {comment.author === loggedInUser.username ? (
                   <button
+                    id="delete-button"
                     disabled={isDeleted}
                     onClick={() => handleDelete(comment.comment_id)}
                   >

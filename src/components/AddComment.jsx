@@ -47,7 +47,7 @@ function AddComment({article_id, setComments, setArticle}) {
 
     })
     .catch((error) => {
-        setError(error.response.data.message)
+        setError("couldn't add comment")
         
     });
     
@@ -61,7 +61,7 @@ function AddComment({article_id, setComments, setArticle}) {
     <>
     <form  onSubmit={postRequest}>
         <Expand>
-      <label htmlFor="username">Username: </label>
+      <label id="username-label" htmlFor="username">Username: </label>
       <input
         id="username"
         type="text"
@@ -71,7 +71,7 @@ function AddComment({article_id, setComments, setArticle}) {
         disabled={isPosted}
       />
       <br></br>
-      <label htmlFor="comment">Comment: </label>
+      <label id="comment-label" htmlFor="comment">Comment: </label>
       <input
         id="comment"
         type="text"
