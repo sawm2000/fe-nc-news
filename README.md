@@ -1,8 +1,28 @@
-# React + Vite
+# React news app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+# Hosted version
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+https://sabreen-news.netlify.app/
+
+# Summary
+
+This react app allows users to view, vote on and comment on articles across a range of topics. With an easy to use interface, you can effortlessly explore content and express your opinions. 
+
+# Backend Repository
+
+https://github.com/sawm2000/nc-news
+
+# Running the Project Locally
+
+1. Clone the repository: `git clone https://github.com/sawm2000/fe-nc-news.git`
+2. Navigate to the project directory: `cd fe-nc-news`
+3. Install dependencies: `npm install`
+4. Start the development server: `npm run dev`
+
+# Minimum Versions
+  Node.js: v21.2.0
+
+
+
+
