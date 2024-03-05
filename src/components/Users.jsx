@@ -18,7 +18,7 @@ function Users() {
       {isLoading ? (
         <Loading loading={"users"} />
       ) : (
-        <ul id="user-list">
+        <ul className="user-list">
           {users.map((user) => {
             return (
               <li id="user-item" key={user.username}>

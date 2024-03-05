@@ -70,16 +70,17 @@ useEffect(()=>{
   }
 
       return (
-        <li className="article-item">
+        <>
+ <div id="single-article">
           <p id="article-title">{article.title}</p>
           <p className="article-author">Written by: {article.author}</p>
           <p className="topic">{article.topic}</p>
           <img
-            id="article-img"
+            id="single-article-img"
             src={article.article_img_url}
             alt="article image"
           />
-      
+      </div>
           <section id="votes">
           <button disabled={voted} id="up-button" onClick={() => handleVote(1)}><img height="35px" width="auto" src="https://cdn3.emoji.gg/emojis/7207-thumbs-up.png" alt="Up vote" /></button>
           <p id="vote-num">{article.votes}</p>
@@ -89,7 +90,11 @@ useEffect(()=>{
           {error === "Couldn't update votes" ? <p>{error}</p> : null}
           </section>
           <CommentCard article_id={article_id} article={article} setArticle={setArticle}/>
-        </li>
+        
+
+</>
+       
+       
       );
     }
  
