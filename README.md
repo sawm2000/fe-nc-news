@@ -1,10 +1,6 @@
 # React news app
 
 
-# Hosted version
-
-https://sabreen-news.netlify.app/
-
 # Summary
 
 This react app allows users to view, vote on and comment on articles across a range of topics. With an easy to use interface, you can effortlessly explore content and express your opinions. 
